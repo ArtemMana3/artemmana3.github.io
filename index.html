@@ -2,9 +2,100 @@
 <html>
 <body>
 <script> 
-	var userObject = window.userInfoPiano;
+var userInfoPiano = {
+  "code" : 0,
+  "ts" : 1682532379,
+  "limit" : 100,
+  "offset" : 0,
+  "total" : 2,
+  "count" : 2,
+  "conversions" : [ {
+    "term_conversion_id" : "TCS4SAO440RA",
+    "term" : {
+      "aid" : "pPawKoMPc1",
+      "term_id" : "TMDFO6F9I3X4",
+      "resource" : {
+        "rid" : "TLLT",
+        "aid" : "pPawKoMPc1",
+        "name" : "2020 The Lawyer Litigation Tracker",
+        "description" : "",
+        "image_url" : null
+      },
+      "name" : "Access Granted",
+      "description" : null,
+      "type" : "grant_access"
+    },
+    "aid" : "pPawKoMPc1",
+    "type" : "Grant access",
+    "user_access" : {
+      "access_id" : "q46QWhOc4X1H",
+      "parent_access_id" : null,
+      "granted" : true,
+      "resource" : {
+        "rid" : "TLLT",
+        "aid" : "pPawKoMPc1",
+        "name" : "2020 The Lawyer Litigation Tracker",
+        "description" : "",
+        "image_url" : null
+      },
+      "user" : {
+        "first_name" : "Artem",
+        "last_name" : "Manakov",
+        "personal_name" : "Artem Manakov",
+        "email" : "artem.manakov29@gmail.com",
+        "uid" : "PNIEqYzp3rrmb9i",
+        "create_date" : 1678981014
+      },
+      "start_date" : 1682011181,
+      "custom_data" : null,
+      "can_revoke_access" : false
+    },
+    "create_date" : 1682011182
+  }, {
+    "term_conversion_id" : "TCWLXHIZ8TTF",
+    "term" : {
+      "aid" : "pPawKoMPc1",
+      "term_id" : "TMI54KV875JJ",
+      "resource" : {
+        "rid" : "TL_WP_02",
+        "aid" : "pPawKoMPc1",
+        "name" : "2020 The Lawyer Premium Content",
+        "description" : "Access to Paywall content on thelawyer.com",
+        "image_url" : null
+      },
+      "name" : "Access Granted",
+      "description" : null,
+      "type" : "grant_access"
+    },
+    "aid" : "pPawKoMPc1",
+    "type" : "Grant access",
+    "user_access" : {
+      "access_id" : "96mrjrxFyNfc",
+      "parent_access_id" : null,
+      "granted" : true,
+      "resource" : {
+        "rid" : "TL_WP_02",
+        "aid" : "pPawKoMPc1",
+        "name" : "2020 The Lawyer Premium Content",
+        "description" : "Access to Paywall content on thelawyer.com",
+        "image_url" : null
+      },
+      "user" : {
+        "first_name" : "Artem",
+        "last_name" : "Manakov",
+        "personal_name" : "Artem Manakov",
+        "email" : "artem.manakov29@gmail.com",
+        "uid" : "PNIEqYzp3rrmb9i",
+        "create_date" : 1678981014
+      },
+      "start_date" : 1679017615,
+      "custom_data" : null,
+      "can_revoke_access" : false
+    },
+    "create_date" : 1679017615
+  } ]
+}
 	alert('ts:' + userObject);
-	nativeFunctions.reloadWebview();
 </script>
 
 </body>

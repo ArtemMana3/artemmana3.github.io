@@ -3,7 +3,18 @@
 <head>
   <title>Слушаем события</title>
   <script>
-    addEventListener("message", (event) => console.log(event));
+window.addEventListener('message', function(event) {
+  if (event.origin !== 'file://') {
+    return;
+  }
+
+  var messageType = event.data.type;
+  var userData = event.data.data;
+  if (messageType === 'userInfoPianoReady') {
+    console.log(userData);
+  }
+});
+
   </script>
 </head>
 <body>

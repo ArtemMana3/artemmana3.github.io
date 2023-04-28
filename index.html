@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>Слушаем события</title>
-  <script>
+</head>
+<body>
+  <h1>Слушаем события</h1>
+    <script>
 window.addEventListener('message', function(event) {
   if (event.origin !== 'file://') {
     return;
@@ -16,8 +19,5 @@ window.addEventListener('message', function(event) {
 });
 
   </script>
-</head>
-<body>
-  <h1>Слушаем события</h1>
 </body>
 </html>

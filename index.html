@@ -1,19 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Слушаем события</title>
-</head>
-<body>
-  <h1>Слушаем события</h1>
-    <script>
-window.addEventListener('message', function(event) {
-  var messageType = event.data.type;
-  var userData = event.data.data;
-  if (messageType === 'userInfoPianoReady') {
-    console.log(userData);
-  }
-});
+<!doctype html>
 
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+
+</head>
+
+<body>
+
+  <form onsubmit='loadConfiguration(event);'>
+    <input id="configuration-id" type="text" value="" />
+    <input type="submit" value="Load demo" />
+  </form>
+  
+  <script>
+    function loadConfiguration(e) {
+      e.preventDefault();
+      try {
+        let configurationId = document.getElementById("configuration-id").value;
+        if(configurationId) {
+          nativeFunctions.loadConfig(configurationId);
+        } else {
+          alert("Please provide a configuration ID");
+        }
+      } catch (e) {
+        alert(e.message);
+      }
+      
+      return false;
+    }
   </script>
+
 </body>
-</html>
+</html>sß

@@ -1,34 +1,28 @@
 <!doctype html>
-
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
   <title></title>
-
 </head>
-
 <body>
-
-  <form onsubmit='scheduleLocalNotifications();'>
+  <form onsubmit="scheduleLocalNotifications();">
     <input id="configuration-id" type="text" value="" />
     <input type="submit" value="scheduleLocalNotifications" />
   </form>
   
-    <form onsubmit='cancelLocalNotifications();'>
+  <form onsubmit="cancelLocalNotifications();">
     <input id="configuration-ids" type="text" value="" />
     <input type="submit" value="cancelLocalNotifications" />
   </form>
+  
   <script>
     function scheduleLocalNotifications() {
       nativeFunctions.scheduleLocalNotifications();
-
     }
 
     function cancelLocalNotifications() {
       nativeFunctions.cancelLocalNotifications();
     }
   </script>
-
 </body>
-</html>sß
+</html>

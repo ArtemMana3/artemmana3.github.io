@@ -5,22 +5,22 @@
   <title></title>
 </head>
 <body>
-  <form onsubmit="scheduleLocalNotifications();">
+  <form onsubmit="scheduleLocalNotificationss();">
     <input id="configuration-id" type="text" value="" />
-    <input type="submit" value="scheduleLocalNotifications" />
+    <input type="submit" value="scheduleLocalNotificationss" />
   </form>
   
-  <form onsubmit="cancelLocalNotifications();">
+  <form onsubmit="cancelLocalNotificationss();">
     <input id="configuration-ids" type="text" value="" />
-    <input type="submit" value="cancelLocalNotifications" />
+    <input type="submit" value="cancelLocalNotificationss" />
   </form>
   
   <script>
-    function scheduleLocalNotifications() {
+    function scheduleLocalNotificationss() {
       nativeFunctions.scheduleLocalNotifications();
     }
 
-    function cancelLocalNotifications() {
+    function cancelLocalNotificationss() {
       nativeFunctions.cancelLocalNotifications();
     }
   </script>

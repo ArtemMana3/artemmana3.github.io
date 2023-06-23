@@ -26,3 +26,25 @@
   </script>
 </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Две кнопки с функциями</title>
+  <script>
+    function func1() {
+      // Код для функции 1
+      nativeFunctions.scheduleLocalNotifications();
+    }
+
+    function func2() {
+      // Код для функции 2
+      nativeFunctions.cancelLocalNotifications();
+    }
+  </script>
+</head>
+<body>
+  <button onclick="func1()">Кнопка 1</button>
+  <button onclick="func2()">Кнопка 2</button>
+</body>
+</html>

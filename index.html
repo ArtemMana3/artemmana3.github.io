@@ -1,24 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Две кнопки с функциями</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart and Deep Links Example</title>
   <script>
-        document.getElementById('openBoostAppButton').addEventListener('click', function() {
-        // Replace the URL with your actual deep link
-        var deepLinkUrl = 'https://www.myboost.com.my/gameconnect/';
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the element with the class `shopping-cart`
+      const shoppingCartElement = document.querySelector('.shopping-cart');
 
-        // Open the URL
-        window.location.href = deepLinkUrl;
+      // Get the button with the class `add`
+      const addButton = document.querySelector('.add');
+
+      // Add a click event listener to the button
+      addButton.addEventListener('click', function() {
+        // Get the text content of the element
+        shoppingCartText = shoppingCartElement.textContent;
+
+        // Extract the number of items in the cart from the text content
+        numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
+
+        // Increment the number of items in the cart
+        numberOfItemsInCart++;
+
+        // Update the text content of the element with the new number of items in the cart
+        shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
+
+        // Trigger the custom function
+        nativeFunctions.updateCartBadge(numberOfItemsInCart);
+      });
+
+      // Add a change event listener to the element
+      shoppingCartElement.addEventListener("DOMSubtreeModified", function() {
+        // Get the text content of the element
+        shoppingCartText = shoppingCartElement.textContent;
+
+        // Extract the number of items in the cart from the text content
+        numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
+
+        // Display an alert with the number of items in the cart
+        alert(`nativeFunctions.updateCartBadge('${numberOfItemsInCart}') should be triggered`);
+      });
+
+      // Function for Empty cart button
+      document.getElementById('emptyCartButton').addEventListener('click', function() {
+        // Implement your logic for emptying the cart
+        console.log('Empty cart button clicked');
+      });
+
+      // Function for Complete purchase button
+      document.getElementById('completePurchaseButton').addEventListener('click', function() {
+        // Implement your logic for completing the purchase
+        console.log('Complete purchase button clicked');
+      });
+
+      // Function for Add to cart button
+      document.getElementById('addToCartButton').addEventListener('click', function() {
+        // Implement your logic for adding to the cart
+        console.log('Add to cart button clicked');
+      });
     });
+
+    // Mocking the nativeFunctions object for demonstration purposes
+    const nativeFunctions = {
+      updateCartBadge: function (count) {
+        console.log(`Updating cart badge with count: ${count}`);
+        // Implement your actual update logic here
+      }
+    };
   </script>
 </head>
 <body>
-  <button onclick="">Empty cart</button>
-  <button onclick="">Complete purchase</button>
-  <button onclick="">Add to cart</button>
-  <a href="fb://profile.php?id=100067370194338">Facebook</a>
-  <a href="instagram://user?username=xenilook">Instagram</a>
-  <a href="snapchat://add/shivani88900?sender_web_id=aa5c5d7e-7851-41b8-9cad-9a5f59a2fa0c&device_type=desktop&is_copy_url=true">Snapchat</a>
-</a>
+
+<a class="shopping-cart" href="#">2 Items in cart</a>
+
+<button class="add">Add item to cart</button>
+
+<button id="emptyCartButton">Empty cart</button>
+<button id="completePurchaseButton">Complete purchase</button>
+<button id="addToCartButton">Add to cart</button>
+
+<a href="fb://profile.php?id=100067370194338">Facebook</a>
+<a href="instagram://user?username=xenilook">Instagram</a>
+<a href="snapchat://add/shivani88900?sender_web_id=aa5c5d7e-7851-41b8-9cad-9a5f59a2fa0c&device_type=desktop&is_copy_url=true">Snapchat</a>
+
 </body>
 </html>

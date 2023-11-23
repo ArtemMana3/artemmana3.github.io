@@ -27,7 +27,7 @@
         shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
 
         // Trigger the custom function
-        nativeFunctions.updateCartBadge(numberOfItemsInCart, 3);
+        nativeFunctions.updateCartBadge(numberOfItemsInCart);
       });
 
       // Add a change event listener to the element
@@ -39,7 +39,7 @@
         numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
 
         // Display an alert with the number of items in the cart
-        alert(`nativeFunctions.updateCartBadge('${numberOfItemsInCart}, 3') should be triggered`);
+        alert(`nativeFunctions.updateCartBadge('${numberOfItemsInCart}') should be triggered`);
       });
 
       // Function for Empty cart button

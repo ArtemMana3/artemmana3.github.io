@@ -27,7 +27,7 @@
         shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
 
         // Trigger the custom function
-        nativeFunctions.updateCartBadge(numberOfItemsInCart, 2);
+        nativeFunctions.updateBadge(2, numberOfItemsInCart);
       });
 
       // Add a change event listener to the element

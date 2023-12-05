@@ -3,17 +3,40 @@
 <head>
   <title>Две кнопки с функциями</title>
   <script>
+    // JavaScript code here
+
+    // Get the element with the class `shopping-cart`
+    const shoppingCartElement = document.querySelector('.shopping-cart');
+
+    // Add a change event listener to the element
+    shoppingCartElement.addEventListener("DOMSubtreeModified", function() {
+      // Get the text content of the element
+      shoppingCartText = shoppingCartElement.textContent;
+
+      // Extract the number of items in the cart from the text content
+      numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
+
+      // Display an alert with the number of items in the cart
+      alert(`nativeFunctions.updateCartBadge('+numberOfItemsInCart+') should be triggered`);
+    });
+
+    // Function to update the shopping cart
+    function updateShoppingCart() {
+      shoppingCartText = shoppingCartElement.textContent;
+      numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
+      numberOfItemsInCart++;
+      shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
+    }
   </script>
 </head>
 <body>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="updateShoppingCart()">Add to cart</button>
   <button onclick="">Empty cart</button>
   <button onclick="">Complete purchase</button>
   <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
   <button onclick="nativeFunctions.updateTab([2, 4]);">updateTab</button>
   <button onclick="nativeFunctions.updateBadge(2, 4);">updateBadge</button>
-
-  <button onclick="">Add to cart</button>
-  <a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?response_type=code&client_id=206153260375-sp2ndmc5jtn1bpmb9mp7duogdt94cqva.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Ftradezing.com%2Fwp-login.php&state=b53e0ab3b61836794431970e712c2203&scope=email%20profile&access_type=offline&prompt=select_account&service=lso&o2v=1&theme=glif&flowName=GeneralOAuthFlow" target="_blank">
-</a>
+  <a href="https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?response_type=code&client_id=206153260375-sp2ndmc5jtn1bpmb9mp7duogdt94cqva.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Ftradezing.com%2Fwp-login.php&state=b53e0ab3b61836794431970e712c2203&scope=email%20profile&access_type=offline&prompt=select_account&service=lso&o2v=1&theme=glif&flowName=GeneralOAuthFlow" target="_blank"></a>
 </body>
 </html>

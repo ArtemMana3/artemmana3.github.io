@@ -18,7 +18,7 @@
       shoppingCartElement.addEventListener("DOMSubtreeModified", function() {
         let shoppingCartText = shoppingCartElement.textContent;
         let numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
-        nativeFunctions.updateBadge(2, 4);
+        nativeFunctions.updateBadge(2, numberOfItemsInCart);
       });
     }
 

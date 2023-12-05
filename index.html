@@ -17,7 +17,7 @@
       numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
 
       // Display an alert with the number of items in the cart
-      alert(`nativeFunctions.updateCartBadge('+numberOfItemsInCart+') should be triggered`);
+      nativeFunctions.updateCartBadge(3, numberOfItemsInCart);
     });
 
     // Function to update the shopping cart

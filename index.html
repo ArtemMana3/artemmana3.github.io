@@ -10,7 +10,7 @@
       let numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
       numberOfItemsInCart++;
       shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
-      nativeFunctions.updateBadge(5, numberOfItemsInCart);
+      nativeFunctions.updateBadge(3, numberOfItemsInCart);
     }
 
     // Function to handle cart updates

@@ -3,29 +3,6 @@
 <head>
   <title>Two Buttons with Functions</title>
   <script>
-    // Function definitions (from the second snippet)
-    function updateShoppingCart() {
-      const shoppingCartElement = document.querySelector('.shopping-cart');
-      let shoppingCartText = shoppingCartElement.textContent;
-      let numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
-      numberOfItemsInCart++;
-      shoppingCartElement.textContent = `${numberOfItemsInCart} Items in cart`;
-      nativeFunctions.updateBadge(3, 2999);
-    }
-
-    // Function to handle cart updates
-    function handleCartUpdate() {
-      const shoppingCartElement = document.querySelector('.shopping-cart');
-      shoppingCartElement.addEventListener("DOMSubtreeModified", function() {
-        let shoppingCartText = shoppingCartElement.textContent;
-        let numberOfItemsInCart = /\d+/.exec(shoppingCartText)[0];
-      });
-    }
-
-    // Document ready function
-    document.addEventListener('DOMContentLoaded', function() {
-      handleCartUpdate();
-    });
   </script>
 </head>
 <body>
@@ -35,7 +12,7 @@
   <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
   <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
   <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
-  <button onclick="updateShoppingCart()">updateBadge</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
   <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button>
 
 </body>

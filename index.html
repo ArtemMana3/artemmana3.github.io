@@ -1,28 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>300px Height Webpage</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 300px; /* Set total page height to 300px */
-            overflow: hidden; /* Disable scrolling */
-        }
-
-        .header {
-            height: 100%; /* Header takes full height of the page */
-            background-color: #f2f2f2; /* Choose your background color */
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+  <title>Two Buttons with Functions</title>
+  <script>
+  </script>
 </head>
 <body>
-    <div class="header">
-        <!-- Header content goes here -->
-        <h1>Welcome to My Website</h1>
-        <p>This is a 300px tall website!</p>
-    </div>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
+  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
+  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
+  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
+  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
+  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button>
+
 </body>
 </html>
+

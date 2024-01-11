@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>example.com/test</title>
-  </head>
-  <body>
-    <script src="http://another-domain.com/app.js"></script>
-    <script>
-      window.onerror = function(message, url, line, column, error) {
-        console.log(message, url, line, column, error);
-      };
-      foo(); // call function declared in app.js
-    </script>
-  </body>
+<head>
+  <title>Two Buttons with Functions</title>
+  <script>
+  </script>
+</head>
+<body>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
+  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
+  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
+  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
+  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
+  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button>
+
+</body>
 </html>
+

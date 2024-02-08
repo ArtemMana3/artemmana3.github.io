@@ -29,17 +29,19 @@
     </style>
 
     <script>
-        function yourFunctionToInjectToken(token) {
-            // Show a modal overlay with the injected token
-            var modalOverlay = document.getElementById("modal-overlay");
-            var modalContent = document.getElementById("modal-content");
+         window.addEventListener('message', function(event) {
+            if (event.data && event.data.token) {
+                var token = event.data.token;
+                // Process the received token
+                console.log('Token received:', token);
 
-            modalContent.innerHTML = "Token received: " + token;
-            modalOverlay.style.display = "flex";
+                var modalOverlay = document.getElementById("modal-overlay");
+                var modalContent = document.getElementById("modal-content");
 
-            // You can use the token in your JavaScript code as needed
-            // For example, update the DOM or make API requests with the token
-        }
+                modalContent.innerHTML = "Token received: " + token;
+                modalOverlay.style.display = "flex";
+            }
+        });
 
         function closeModal() {
             // Hide the modal overlay when the user clicks on it

@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Token Handling Example</title>
+  <title>Two Buttons with Functions</title>
+  <script>
+  </script>
 </head>
 <body>
-    <h1>Token Handling Example</h1>
-    <div id="tokenDisplay"></div>
-    <script>
-        // Listen for messages sent from Swift code
-        window.addEventListener('message', function(event) {
-            if (event.data && event.data.token) {
-                var token = event.data.token;
-                // Process the received token
-                console.log('Token received:', token);
-                // Display the token on the webpage
-                var tokenDisplay = document.getElementById('tokenDisplay');
-                tokenDisplay.innerText = 'Token: ' + token;
-            }
-        });
-    </script>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
+  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
+  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
+  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
+  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
+  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button>
+
 </body>
 </html>
 

@@ -11,6 +11,12 @@
       margin-bottom: 10px; /* Space between buttons */
     }
   </style>
+  <script>
+    function setEmail() {
+      const email = document.getElementById('email').value;
+      nativeFunctions.klaviyoSetEmail(email);
+    }
+  </script>
 </head>
 <body>
   <div class="shopping-cart">0 Items in cart</div>
@@ -22,8 +28,9 @@
   <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
   <button onclick="nativeFunctions.updateBadge(3, 0);">updateBadge0</button>
   <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button><br><br><br>
-  <button onclick="nativeFunctions.klaviyoSetExternalUserId('bbgdfgdfggdf12')">klaviyoSetExternalUserId</button><br>
-  <button onclick="nativeFunctions.klaviyoSetEmail('artem.testNativefun10@gmail.com')">klaviyoSetEmail</button><br>
+  <input type="email" id="email" placeholder="Enter Email">
+  <button onclick="setEmail()">Set Email</button>
+    <button onclick="nativeFunctions.klaviyoSetEmail('artem.testNativefun10@gmail.com')">klaviyoSetEmail</button><br>
   <button onclick="nativeFunctions.klaviyoSetPhoneNumber('+380634351110')">klaviyoSetPhoneNumber</button><br>
   <button onclick="nativeFunctions.klaviyoSendAttributes(['audio-rooms_news'])">klaviyoSendAttributes</button><br>
   <button onclick="nativeFunctions.klaviyolDeleteAttributes(['audio-rooms_news'])">klaviyolDeleteAttributes</button><br>

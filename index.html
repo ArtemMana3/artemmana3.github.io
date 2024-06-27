@@ -12,6 +12,32 @@
     }
   </style>
   <script>
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
     function setExternalUserId() {
       const userId = document.getElementById('externalUserId').value;
       nativeFunctions.klaviyoSetExternalUserId(userId);
@@ -38,6 +64,7 @@
   <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
   <button onclick="nativeFunctions.updateBadge(3, 0);">updateBadge0</button>
   <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button><br><br><br>
+
   <input type="text" id="externalUserId" placeholder="Enter External User ID">
   <button onclick="setExternalUserId()">Set External User ID</button><br>
 
@@ -53,7 +80,9 @@
   <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
   <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
 
-
+  <!-- New button to get location -->
+  <button onclick="getLocation()">Get Location</button>
 </body>
 </html>
+
 

@@ -40,12 +40,12 @@
 
     function setExternalUserId() {
       const userId = document.getElementById('externalUserId').value;
-      nativeFunctions.klaviyoSetExternalUserId(userId);
+      nativeFunctions.onesignalSetExternalUserId(userId);
     }
 
     function setEmail() {
       const email = document.getElementById('email').value;
-      nativeFunctions.klaviyoSetEmail(email);
+      nativeFunctions.onesignalSetEmail(email);
     }
 
     function setPhoneNumber() {
@@ -76,11 +76,15 @@
   <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
   <button onclick="setPhoneNumber()">Set Phone Number</button><br>
 
-  <button onclick="nativeFunctions.klaviyoSendAttributes(['audio-rooms3'])">klaviyoSendAttributes</button><br>
-  <button onclick="nativeFunctions.klaviyolDeleteAttributes(['audio-rooms3'])">klaviyolDeleteAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalSendTags(['audio-rooms3'])">klaviyoSendAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalDeleteTags(['audio-rooms3'])">klaviyolDeleteAttributes</button><br>
   <button onclick="nativeFunctions.klaviyoResetProfile()">klaviyoResetProfile</button><br>
   <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
   <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
+  <button onclick="nativeFunctions.onesignalRemoveExternalUserId()">onesignalRemoveExternalUserId</button><br>
+    <button onclick="nativeFunctions.onesignalLogoutEmail()">onesignalLogoutEmail</button><br>
+
+
 
   <!-- New button to get location -->
   <button onclick="getLocation()">Get Location</button>

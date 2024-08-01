@@ -102,15 +102,18 @@
         }
         
         try {
-          var userObject = JSON.stringify(window.mobiloudAppInfo);
-          if (typeof window.mobiloudAppInfo !== 'undefined') {
-              let appInfoDiv = document.querySelector('.appInfo');
-              appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
-          } else {
-              let appInfoDiv = document.querySelector('.appInfo');
-              appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
+          document.addEventListener('DOMContentLoaded', (event) => {
+            var userObject = JSON.stringify(window.mobiloudAppInfo);
+            if (typeof window.mobiloudAppInfo !== 'undefined') {
+                let appInfoDiv = document.querySelector('.appInfo');
+                appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
+            } else {
+                let appInfoDiv = document.querySelector('.appInfo');
+                appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
 
-          }
+            }
+          });
+
           
         } catch(errors) {
               let appInfoDiv = document.querySelector('.appInfo');

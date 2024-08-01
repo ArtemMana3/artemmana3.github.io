@@ -100,32 +100,18 @@
             //alert(`${errors}`)
           }
         }
-window.onload = function() {
-  // Code to run after the page is fully loaded
-  if (typeof window.mobiloudAppInfo !== 'undefined') {
-    // Convert the object to a JSON string for display
-    let userObject = JSON.stringify(window.mobiloudAppInfo, null, 2); // Pretty print with 2-space indentation
-    let appInfoDiv = document.querySelector('.appInfo');
-    appInfoDiv.innerHTML = `<pre>${userObject}</pre>`; // Use <pre> to preserve formatting
-  } else {
-    let appInfoDiv = document.querySelector('.appInfo');
-    appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
-  }
-};
-
-      
-      function displayAppInfo() {
-  if (typeof window.mobiloudAppInfo !== 'undefined') {
-    // Convert the object to a JSON string for display
-    let userObject = JSON.stringify(window.mobiloudAppInfo, null, 2); // Pretty print with 2-space indentation
-    let appInfoDiv = document.querySelector('.appInfo');
-    appInfoDiv.innerHTML = `<pre>${userObject}</pre>`; // Use <pre> to preserve formatting
-  } else {
-    let appInfoDiv = document.querySelector('.appInfo');
-    appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
-  }
-}
-
+        
+        window.onload = function() {
+          try {
+            var userInfo = JSON.stringify(nativeFunctions.getDeviceInfo());
+            var userObject = JSON.stringify(window.mobiloudAppInfo);
+            
+            let appInfoDiv = document.querySelector('.appInfo');
+            appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
+          } catch(errors) {
+            //alert(`${errors}`)
+          }
+        };
       </script>
     </div>
   </div>

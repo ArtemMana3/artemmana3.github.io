@@ -82,7 +82,7 @@
       <h1>Are we in the app?</h1>
       <h3 class="inApp">No</h3>
       <br /><br />
-      <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
+        <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
 
       <h1>App Info</h1>
       <div class="appInfo"></div>
@@ -103,7 +103,7 @@
         
         try {
           var userInfo = JSON.stringify(nativeFunctions.getDeviceInfo());
-          var userObject = JSON.stringify(mobiloudAppInfo);
+          var userObject = mobiloudAppInfo;
           
           let appInfoDiv = document.querySelector('.appInfo');
           appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;

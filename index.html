@@ -103,7 +103,7 @@
         
         try {
           var userInfo = JSON.stringify(nativeFunctions.getDeviceInfo());
-          var userObject = mobiloudAppInfo;
+          var userObject = window.mobiloudAppInfo;
           
           let appInfoDiv = document.querySelector('.appInfo');
           appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;

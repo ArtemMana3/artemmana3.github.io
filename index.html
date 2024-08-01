@@ -100,9 +100,9 @@
             //alert(`${errors}`)
           }
         }
-        
+        document.addEventListener('DOMContentLoaded', (event) => {
         try {
-          nativeFunctions.getDeviceInfo();
+          nativeFunctions.getDeviceInfo()
           var userObject = JSON.stringify(window.mobiloudAppInfo);
           if (typeof mobiloudAppInfo !== 'undefined') {
               let appInfoDiv = document.querySelector('.appInfo');
@@ -117,6 +117,7 @@
               let appInfoDiv = document.querySelector('.appInfo');
               appInfoDiv.innerHTML = 'errors';       
         }
+      }
       
       </script>
     </div>

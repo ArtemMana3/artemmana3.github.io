@@ -101,24 +101,21 @@
           }
         }
         
-        try {
-          document.addEventListener('DOMContentLoaded', (event) => {
-            var userObject = JSON.stringify(window.mobiloudAppInfo);
-            if (typeof window.mobiloudAppInfo !== 'undefined') {
-                let appInfoDiv = document.querySelector('.appInfo');
-                appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
-            } else {
-                let appInfoDiv = document.querySelector('.appInfo');
-                appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
+        document.addEventListener('DOMContentLoaded', (event) => {
+          // Check if mobiloudAppInfo is defined
+          if (typeof window.mobiloudAppInfo !== 'undefined') {
+            // Convert the object to a JSON string for display
+            let userObject = JSON.stringify(window.mobiloudAppInfo, null, 2); // Pretty print with 2-space indentation
+            let appInfoDiv = document.querySelector('.appInfo');
+            appInfoDiv.innerHTML = `<pre>${userObject}</pre>`; // Use <pre> to preserve formatting
+          } else {
+            let appInfoDiv = document.querySelector('.appInfo');
+            appInfoDiv.innerHTML = 'mobiloudAppInfo is not defined';
+          }
+        });
 
-            }
-          });
-
-          
-        } catch(errors) {
-              let appInfoDiv = document.querySelector('.appInfo');
-              appInfoDiv.innerHTML = 'errors';       
-        }
+        // Debugging: Log the existence of mobiloudAppInfo
+        console.log('mobiloudAppInfo:', window.mobiloudAppInfo);
       
       </script>
     </div>

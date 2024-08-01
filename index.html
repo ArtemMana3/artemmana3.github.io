@@ -103,7 +103,7 @@
         
         try {
           var userObject = JSON.stringify(window.mobiloudAppInfo);
-          if (typeof mobiloudAppInfo !== 'undefined') {
+          if (typeof window.mobiloudAppInfo !== 'undefined') {
               let appInfoDiv = document.querySelector('.appInfo');
               appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
           } else {

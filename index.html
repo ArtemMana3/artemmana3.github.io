@@ -102,7 +102,7 @@
         }
         
         try {
-          var userInfo = JSON.stringify(nativeFunctions.getDeviceInfo());
+          nativeFunctions.getDeviceInfo();
           var userObject = JSON.stringify(window.mobiloudAppInfo);
           if (typeof mobiloudAppInfo !== 'undefined') {
               let appInfoDiv = document.querySelector('.appInfo');

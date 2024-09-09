@@ -1,120 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Two Buttons with Functions</title>
   <style>
-    * {
-      font-family:"Roboto", "Open Sans", sans-serif;
-      font-size:16px;
-      color:#666;
-    }
-    
-    h1 {
-      font-size:28px;
-    }
-    
-    h2 {
-      font-size:21px;
-    }
-    
-    h1,h2 {
-      margin-bottom:12px;
-    }
-    
-    .wrap {
-      display:block;
-      width:100%;
-    }
-    
-    .content {
-      display:block;
-      width:100%;
-    }
-    
-    label {
-      display:block;
-      margin-bottom:5px;
-      margin-top:8px;
-    }
-    
-    input {
-      padding:8px;
-      border:1px solid #CCC;
-      margin-bottom:8px;
-      font-size:16px;
-      color:#666;
-      border-radius:3px;
-    }
-    
     button {
-      padding:15px;
-      width:100%;
-      margin-bottom:12px;
-    }
-    
-    a {
-      display:block;
-      padding:10px;
-      border:1px solid #ccc;
-      margin-bottom:15px;
-      text-decoration:none;
-      border-radius:3px;
-      background:#f2f2f2;
-    }
-    
-    a:focus, a:active {
-      border:1px solid #333;
-      color:#333;
+      width: 250px; /* Adjust width as needed */
+      height: 50px; /* Adjust height as needed */
+      font-size: 16px; /* Adjust font size as needed */
+      padding: 10px; /* Adjust padding as needed */
+      margin-bottom: 10px; /* Space between buttons */
     }
   </style>
+  <script>
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function setExternalUserId() {
+      const userId = document.getElementById('externalUserId').value;
+      nativeFunctions.onesignalSetExternalUserId(userId);
+    }
+
+    function setEmail() {
+      const email = document.getElementById('email').value;
+      nativeFunctions.onesignalSetEmail(email);
+    }
+
+    function setPhoneNumber() {
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      nativeFunctions.klaviyoSetPhoneNumber(phoneNumber);
+    }
+  </script>
 </head>
 <body>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
+  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
+  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
+  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
+  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
+  <button onclick="nativeFunctions.updateBadge(3, 0);">updateBadge0</button>
+  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button><br><br><br>
+  <a href="https://www.microsoft.com/windows" class="btn">Go to Windows Site</a><br>
 
-  <div class="wrap">
-    <div class="content">
-      <h2>This is a page for testing nativeFunctions</h2>
 
-      <h1>User info</h1>
-      <div class="userInfo">
-      </div>
-      <br /><br />  
-      
-      <h1>Are we in the app?</h1>
-      <h3 class="inApp">No</h3>
-      <br /><br />
-        <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
+  <input type="text" id="externalUserId" placeholder="Enter External User ID">
+  <button onclick="setExternalUserId()">Set External User ID</button><br>
 
-      <h1>App Info</h1>
-      <div class="appInfo"></div>
-      <br /><br />
-      
-      <script type="text/javascript"> 
-        const isApp = navigator.userAgent.toLowerCase().indexOf('canvas') > -1;
-        let user = document.querySelector('.userInfo');
-        let app = document.querySelector('.inApp');
-        
-        if(isApp) {
-          try {
-            app.innerHTML = "Yes, we are in the app, canvas string is present in the user agent";
-          } catch(errors) {
-            //alert(`${errors}`)
-          }
-        }
+  <input type="email" id="email" placeholder="Enter Email">
+  <button onclick="setEmail()">Set Email</button><br>
 
-        window.onload = function() {
-          try {
-            var userInfo = JSON.stringify(nativeFunctions.getDeviceInfo());
-            var userObject = JSON.stringify(window.mobiloudAppInfo);
-            
-            let appInfoDiv = document.querySelector('.appInfo');
-            appInfoDiv.innerHTML = `${userInfo} / ${userObject}`;
-          } catch(errors) {
-            //alert(`${errors}`)
-          }
-        };
-      </script>
-    </div>
-  </div>
+  <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
+  <button onclick="setPhoneNumber()">Set Phone Number</button><br>
+
+  <button onclick="nativeFunctions.onesignalSendTags(['audio-rooms3'])">klaviyoSendAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalDeleteTags(['audio-rooms3'])">klaviyolDeleteAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalTriggerPushPrompt()">onesignalTriggerPushPrompt</button><br>
+  <button onclick="nativeFunctions.klaviyoResetProfile()">klaviyoResetProfile</button><br>
+  <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
+  <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
+  <button onclick="nativeFunctions.onesignalRemoveExternalUserId()">onesignalRemoveExternalUserId</button><br>
+  <button onclick="nativeFunctions.onesignalLogoutEmail()">onesignalLogoutEmail</button><br>
+  <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
+
+
+
+  <!-- New button to get location -->
+  <button onclick="getLocation()">Get Location</button>
 </body>
 </html>
 

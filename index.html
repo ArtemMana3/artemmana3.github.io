@@ -21,30 +21,21 @@
     </style>
 </head>
 <body>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            if (navigator.userAgent.toLowerCase().indexOf('canvas') !== -1) {
-
-                function setSessionCookie(name, value) {
-                    document.cookie = name + '=' + value + '; path=/; max-age=' + (60 * 60 * 24);
-                }
-
-                function getSessionCookie(name) {
-                    const value = `; ${document.cookie}`;
-                    const parts = value.split(`; ${name}=`);
-                    if (parts.length === 2) return parts.pop().split(';').shift();
-                }
-
-                nativeFunctions.klaviyoSetEmail('artemte@gmail.com');
-
-            }
-        });
-    </script>
     <h1>Welcome to My Simple Website</h1>
     <p>This is a small example of a website with a link that opens in a new tab.</p>
     <p>
         Check out <a href="https://apple.com" target="_blank">Example Website</a>!
     </p>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript code to run when the DOM is fully loaded
+            console.log('DOM fully loaded and parsed');
+            
+            // Example: Change the link color after the DOM is loaded
+            const link = document.querySelector('a');
+            link.style.color = 'green'; 
+        });
+</script>
 </body>
 </html>
 

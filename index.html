@@ -22,7 +22,6 @@
     <script>
     document.addEventListener('load', function() {
         // Check if the user agent contains 'canvas' (case insensitive)
-        if (navigator.userAgent.toLowerCase().indexOf('canvas') !== -1) {
             // Function to set a session cookie
             function setSessionCookie(name, value) {
                 document.cookie = name + '=' + value + '; path=/; max-age=' + (60 * 60 * 24); // 24 hours
@@ -60,7 +59,7 @@
                         setSessionCookie('externalUserIdSet', 'true');
                     }
                 }
-            }
+            
         }
     });
     </script>

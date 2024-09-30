@@ -20,13 +20,49 @@
         }
     </style>
     <script>
-        // Function that runs when the DOM is fully loaded
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("Document is fully loaded and parsed");
-            nativeFunctions.klaviyoSetEmail('artemte@gmail.com');
-            // You can add more code here if needed
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if the user agent contains 'canvas' (case insensitive)
+        if (navigator.userAgent.toLowerCase().indexOf('canvas') !== -1) {
+            // Function to set a session cookie
+            function setSessionCookie(name, value) {
+                document.cookie = name + '=' + value + '; path=/; max-age=' + (60 * 60 * 24); // 24 hours
+            }
 
+            // Function to get a session cookie
+            function getSessionCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            // Liquid variables to check if user is logged in and get the user's email
+            var userLoggedIn = "vitor@mobiloud.com";
+            var userEmail = "vitor@mobiloud.com";
+          
+            if (userLoggedIn) {
+                // Set user email using the native function
+                nativeFunctions.klaviyoSetEmail(userEmail);
+                // Identify the user in Klaviyo
+                klaviyo.identify({
+                    $email: userEmail
+                });
+            } else {
+                // Check if the session cookie exists
+                if (!getSessionCookie('externalUserIdSet')) {
+                    // Get device info using the native function
+                    var deviceInfo = nativeFunctions.getDeviceInfo();
+                    if (deviceInfo.pushExternalId) {
+                        // Identify the user in Klaviyo using the external ID
+                        klaviyo.identify({
+                            $id: deviceInfo.pushExternalId
+                        });
+                        // Set the session cookie to prevent this from running again in the same session
+                        setSessionCookie('externalUserIdSet', 'true');
+                    }
+                }
+            }
+        }
+    });
     </script>
 </head>
 <body>

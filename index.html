@@ -22,8 +22,8 @@
     <script>
     window.addEventListener('load', function() {
         // Check if the user agent contains 'canvas' (case insensitive)
+        if (navigator.userAgent.toLowerCase().indexOf('canvas') !== -1) {
             // Function to set a session cookie
-                    console.log("Document is fully loaded and parsed");
             function setSessionCookie(name, value) {
                 document.cookie = name + '=' + value + '; path=/; max-age=' + (60 * 60 * 24); // 24 hours
             }
@@ -39,11 +39,9 @@
             var userLoggedIn = "vitor@mobiloud.com";
             var userEmail = "vitor@mobiloud.com";
           
-            if (true) {
-                console.log("klaviyoSetEmail is fully loaded and parsed");
+            if (userLoggedIn) {
                 // Set user email using the native function
                 nativeFunctions.klaviyoSetEmail(userEmail);
-
                 // Identify the user in Klaviyo
                 klaviyo.identify({
                     $email: userEmail
@@ -63,7 +61,7 @@
                     }
                 }
             }
-        
+        }
     });
     </script>
 </head>

@@ -1,76 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
-    <script>
-    window.addEventListener('load', function() {
-        // Check if the user agent contains 'canvas' (case insensitive)
-        if (navigator.userAgent.toLowerCase().indexOf('canvas') !== -1) {
-            // Function to set a session cookie
-            function setSessionCookie(name, value) {
-                document.cookie = name + '=' + value + '; path=/; max-age=' + (60 * 60 * 24); // 24 hours
-            }
+  <title>Two Buttons with Functions</title>
+  <style>
+    button {
+      width: 250px; /* Adjust width as needed */
+      height: 50px; /* Adjust height as needed */
+      font-size: 16px; /* Adjust font size as needed */
+      padding: 10px; /* Adjust padding as needed */
+      margin-bottom: 10px; /* Space between buttons */
+    }
+  </style>
+  <script>
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
 
-            // Function to get a session cookie
-            function getSessionCookie(name) {
-                const value = `; ${document.cookie}`;
-                const parts = value.split(`; ${name}=`);
-                if (parts.length === 2) return parts.pop().split(';').shift();
-            }
+    function success(pos) {
+      const crd = pos.coords;
+      console.log("Your current position is:");
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+    }
 
-            // Liquid variables to check if user is logged in and get the user's email
-            var userLoggedIn = "artemtest7@stormotion.com";
-            var userEmail = "artemtest7@stormotion.com";
-          
-            if (userLoggedIn) {
-                // Set user email using the native function
-                nativeFunctions.klaviyoSetEmail(userEmail);
-                // Identify the user in Klaviyo
-                klaviyo.identify({
-                    $email: userEmail
-                });
-            } else {
-                // Check if the session cookie exists
-                if (!getSessionCookie('externalUserIdSet')) {
-                    // Get device info using the native function
-                    var deviceInfo = nativeFunctions.getDeviceInfo();
-                    if (deviceInfo.pushExternalId) {
-                        // Identify the user in Klaviyo using the external ID
-                        klaviyo.identify({
-                            $id: deviceInfo.pushExternalId
-                        });
-                        // Set the session cookie to prevent this from running again in the same session
-                        setSessionCookie('externalUserIdSet', 'true');
-                    }
-                }
-            }
-        }
-    });
-    </script>
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+
+    function setExternalUserId() {
+      const userId = document.getElementById('externalUserId').value;
+      nativeFunctions.onesignalSetExternalUserId(userId);
+    }
+
+    function setEmail() {
+      const email = document.getElementById('email').value;
+      nativeFunctions.onesignalSetEmail(email);
+    }
+
+    function setPhoneNumber() {
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      nativeFunctions.klaviyoSetPhoneNumber(phoneNumber);
+    }
+  </script>
 </head>
 <body>
-    <h1>Welcome to My Simple Website</h1>
-    <p>This is a small example of a website with a link that opens in a new tab.</p>
-    <p>
-        Check out <a href="https://apple.com" target="_blank">Example Website</a>!
-    </p>
+  <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
+  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
+  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
+  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
+  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
+  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
+  <button onclick="nativeFunctions.updateBadge(3, 0);">updateBadge0</button>
+  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button><br><br><br>
+  <a href="https://www.microsoft.com/windows" class="btn">Go to Windows Site</a><br>
+
+
+  <input type="text" id="externalUserId" placeholder="Enter External User ID">
+  <button onclick="setExternalUserId()">Set External User ID</button><br>
+
+  <input type="email" id="email" placeholder="Enter Email">
+  <button onclick="setEmail()">Set Email</button><br>
+
+  <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
+  <button onclick="setPhoneNumber()">Set Phone Number</button><br>
+
+  <button onclick="nativeFunctions.onesignalSendTags(['audio-rooms3'])">klaviyoSendAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalDeleteTags(['audio-rooms3'])">klaviyolDeleteAttributes</button><br>
+  <button onclick="nativeFunctions.onesignalTriggerPushPrompt()">onesignalTriggerPushPrompt</button><br>
+  <button onclick="nativeFunctions.klaviyoResetProfile()">klaviyoResetProfile</button><br>
+  <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
+  <button onclick="nativeFunctions.klaviyoTriggerPushPrompt()">klaviyoTriggerPushPrompt</button><br>
+  <button onclick="nativeFunctions.openMultiConfigurationScreen(true)">openMultiConfigurationScreen</button><br>
+  <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
+  <button onclick="nativeFunctions.onesignalRemoveExternalUserId()">onesignalRemoveExternalUserId</button><br>
+  <button onclick="nativeFunctions.onesignalLogoutEmail()">onesignalLogoutEmail</button><br>
+  <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
+
+
+
+  <!-- New button to get location -->
+  <button onclick="getLocation()">Get Location</button>
 </body>
 </html>
-

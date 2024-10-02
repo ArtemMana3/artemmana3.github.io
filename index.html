@@ -56,6 +56,9 @@
 </head>
 <body>
   <div class="shopping-cart">0 Items in cart</div>
+  <button onclick="nativeFunctions.openMultiConfigurationScreen(true)">openMultiConfigurationScreen-true</button><br>
+  <button onclick="nativeFunctions.openMultiConfigurationScreen(false)">openMultiConfigurationScreen-false</button><br>
+
   <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
   <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
   <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
@@ -82,7 +85,6 @@
   <button onclick="nativeFunctions.klaviyoResetProfile()">klaviyoResetProfile</button><br>
   <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
   <button onclick="nativeFunctions.klaviyoTriggerPushPrompt()">klaviyoTriggerPushPrompt</button><br>
-  <button onclick="nativeFunctions.openMultiConfigurationScreen(true)">openMultiConfigurationScreen</button><br>
   <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
   <button onclick="nativeFunctions.onesignalRemoveExternalUserId()">onesignalRemoveExternalUserId</button><br>
   <button onclick="nativeFunctions.onesignalLogoutEmail()">onesignalLogoutEmail</button><br>

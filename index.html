@@ -52,47 +52,23 @@
       const phoneNumber = document.getElementById('phoneNumber').value;
       nativeFunctions.klaviyoSetPhoneNumber(phoneNumber);
     }
+
+    function setEmailMerge() {
+      const email = document.getElementById('email').value;
+      nativeFunctions.klaviyoMergeProfiles(null, email);
+    }
+
+    function setExternalIdMerge() {
+      const externalId = document.getElementById('externalId').value;
+      nativeFunctions.klaviyoMergeProfiles(externalId, null);
+    }
   </script>
 </head>
 <body>
-  <button onclick="nativeFunctions.openMultiConfigurationScreen(true)">openMultiConfigurationScreen-true</button><br>
-  <button onclick="nativeFunctions.openMultiConfigurationScreen(false)">openMultiConfigurationScreen-false</button><br>
-  <div class="shopping-cart">0 Items in cart</div>
-  <button onclick="nativeFunctions.scheduleLocalNotifications();">Add to cart</button>
-  <button onclick="nativeFunctions.emptyCart();">Empty cart</button>
-  <button onclick="nativeFunctions.completePurchase();">Complete purchase</button>
-  <button onclick="nativeFunctions.updateTabs();">updateTabs</button>
-  <button onclick="nativeFunctions.updateTab([0, 1, 2, 4, 5, 6]);">updateTab</button>
-  <button onclick="nativeFunctions.updateBadge(3, 2999);">updateBadge</button>
-  <button onclick="nativeFunctions.updateBadge(3, 0);">updateBadge0</button>
-  <button onclick="nativeFunctions.dsfdfsd()">dsfdfsd</button><br><br><br>
-  <a href="https://www.microsoft.com/windows" class="btn">Go to Windows Site</a><br>
+  <input type="email" id="email" placeholder="Enter Phone Number">
+  <button onclick="setEmailMerge()">Set Email To merge</button><br>
 
-
-  <input type="text" id="externalUserId" placeholder="Enter External User ID">
-  <button onclick="setExternalUserId()">Set External User ID</button><br>
-
-  <input type="email" id="email" placeholder="Enter Email">
-  <button onclick="setEmail()">Set Email</button><br>
-
-  <input type="tel" id="phoneNumber" placeholder="Enter Phone Number">
-  <button onclick="setPhoneNumber()">Set Phone Number</button><br>
-
-  <button onclick="nativeFunctions.onesignalSendTags(['audio-rooms3'])">klaviyoSendAttributes</button><br>
-  <button onclick="nativeFunctions.onesignalDeleteTags(['audio-rooms3'])">klaviyolDeleteAttributes</button><br>
-  <button onclick="nativeFunctions.onesignalTriggerPushPrompt()">onesignalTriggerPushPrompt</button><br>
-  <button onclick="nativeFunctions.klaviyoResetProfile()">klaviyoResetProfile</button><br>
-  <button onclick="nativeFunctions.klaviyoSetAttributes(JSON.stringify({'audio-rooms3': false, 'trending-new3': true}))">klaviyoSetAttributes</button><br>
-  <button onclick="nativeFunctions.klaviyoMergeProfiles('C629360C-115A-404B-A3BF-A3BA665B2991', null);">klaviyoMergeProfiles</button>
-  <button onclick="nativeFunctions.klaviyoTriggerPushPrompt()">klaviyoTriggerPushPrompt</button><br>
-  <button onclick="nativeFunctions.settingsOpen()">settingsOpen</button><br>
-  <button onclick="nativeFunctions.onesignalRemoveExternalUserId()">onesignalRemoveExternalUserId</button><br>
-  <button onclick="nativeFunctions.onesignalLogoutEmail()">onesignalLogoutEmail</button><br>
-  <button onclick="nativeFunctions.getDeviceInfo()">getDeviceInfo</button><br><br><br>
-
-
-
-  <!-- New button to get location -->
-  <button onclick="getLocation()">Get Location</button>
+    <input type="text" id="externalId" placeholder="Enter Phone Number">
+  <button onclick="setExternalIdMerge()">Set External Id to merge</button><br>
 </body>
 </html>

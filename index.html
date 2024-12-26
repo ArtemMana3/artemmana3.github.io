@@ -62,6 +62,11 @@
       const externalId = document.getElementById('externalId').value;
       nativeFunctions.klaviyoMergeProfiles(externalId, null);
     }
+
+    function setEmailKlaviyo() {
+      const email = document.getElementById('klaviyoSetEmail').value;
+      nativeFunctions.klaviyoSetEmail(email);
+    }
   </script>
 </head>
 <body>
@@ -70,5 +75,8 @@
 
     <input type="text" id="externalId" placeholder="Set External Id to merge">
   <button onclick="setExternalIdMerge()">Set External Id to merge</button><br>
+
+      <input type="text" id="klaviyoSetEmail" placeholder="Set Email">
+  <button onclick="setExternalIdMerge()">Set Email</button><br>
 </body>
 </html>

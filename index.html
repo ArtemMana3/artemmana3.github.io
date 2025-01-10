@@ -67,6 +67,10 @@
       const email = document.getElementById('klaviyoSetEmail').value;
       nativeFunctions.klaviyoSetEmail(email);
     }
+
+    function printPage() {
+      window.print();
+    }
   </script>
 </head>
 <body>
@@ -78,5 +82,8 @@
 
       <input type="text" id="klaviyoSetEmail" placeholder="Set Email">
   <button onclick="setEmailKlaviyo()">Set Email</button><br>
+
+  <button onclick="printPage()">Print This Page</button>
+
 </body>
 </html>

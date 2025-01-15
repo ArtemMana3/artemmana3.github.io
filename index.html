@@ -68,6 +68,11 @@
       nativeFunctions.klaviyoSetEmail(email);
     }
 
+    function setExternalIsKlaviyo() {
+      const externalID = document.getElementById('setExternalIsKlaviyo').value;
+      nativeFunctions.klaviyoSetExternalUserId(externalID);
+    }
+
     function printPage() {
       window.print();
     }
@@ -82,6 +87,9 @@
 
       <input type="text" id="klaviyoSetEmail" placeholder="Set Email">
   <button onclick="setEmailKlaviyo()">Set Email</button><br>
+
+        <input type="text" id="setExternalIsKlaviyo" placeholder="Set Externl ID">
+  <button onclick="setExternalIsKlaviyo()">Set External Id</button><br>
 
   <button onclick="selectConfigurationButton.performClick('SNBeC0');">Config 1</button>
   <button onclick="selectConfigurationButton.performClick('SNBeC0');">Config 2</button>
